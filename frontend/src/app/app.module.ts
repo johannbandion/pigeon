@@ -8,6 +8,9 @@ import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MessageComponent } from './message/message.component';
+import { MatSidenavModule} from "@angular/material/sidenav";
+import {MatListModule} from "@angular/material/list";
+
 
 
 @NgModule({
@@ -22,7 +25,9 @@ import { MessageComponent } from './message/message.component';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSidenavModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

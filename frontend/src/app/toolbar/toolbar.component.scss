@@ -1,3 +1,17 @@
-.example-spacer {
-  flex: 1 1 auto;
+.spacer-right {
+  flex-grow: 1;
+}
+
+.mat-list-item {
+  color: grey;
+}
+
+.sidenav-container {
+  height: calc(100vh - 64px);
+}
+
+@media only screen and (max-width: 600px) {
+  .sidenav-container {
+    height: calc(100vh - 56px)
+  }
 }
