@@ -10,6 +10,10 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MessageComponent } from './message/message.component';
 import { MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
+import { LoginComponent } from './login/login.component';
+import {MatCardModule} from "@angular/material/card";
+import {MatInputModule} from "@angular/material/input";
+import {ReactiveFormsModule} from "@angular/forms";
 
 
 
@@ -18,6 +22,7 @@ import {MatListModule} from "@angular/material/list";
     AppComponent,
     ToolbarComponent,
     MessageComponent,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,
@@ -28,6 +33,9 @@ import {MatListModule} from "@angular/material/list";
     MatButtonModule,
     MatSidenavModule,
     MatListModule,
+    MatCardModule,
+    MatInputModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
