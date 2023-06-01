@@ -1,1 +1,1 @@
-insert into USERS (name, password) values ('Johann Bandion', 'password');
+-- insert into USERS (name, password) values ('Johann Bandion', 'password');
