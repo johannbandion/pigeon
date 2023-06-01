@@ -12,7 +12,6 @@ import { ToolbarComponent } from './toolbar/toolbar.component';
 import { MessageComponent } from './message/message.component';
 import { MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
-import { LoginComponent } from './login/login.component';
 import {MatCardModule} from "@angular/material/card";
 import {MatInputModule} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
