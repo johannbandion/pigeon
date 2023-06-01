@@ -8,11 +8,17 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import { LoginComponent } from './pages/login/login.component';
+import { ToolbarComponent } from './toolbar/toolbar.component';
+import { MessageComponent } from './message/message.component';
+import { MatSidenavModule} from "@angular/material/sidenav";
+import {MatListModule} from "@angular/material/list";
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent
+    LoginComponent,
+    ToolbarComponent,
+    MessageComponent,
   ],
   imports: [
     BrowserModule,
@@ -20,7 +26,9 @@ import { LoginComponent } from './pages/login/login.component';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSidenavModule,
+    MatListModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

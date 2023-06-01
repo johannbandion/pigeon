@@ -1,0 +1,31 @@
+<div>
+  <mat-toolbar color="primary" fixedInViewport
+               class="flex justify-between items-center py-2 md:py-4 mx-auto"
+  >
+    <button
+      type="button"
+      mat-icon-button
+      (click)="drawer.toggle()"
+      class="md:hidden"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span class="hidden sm:block">Pigeon</span>
+    <span class="spacer-right"></span>
+    <img src="assets/pigeon_logo.png" alt="" class="h-full navbarSameWidth py-4" style="width: 3%;">
+  </mat-toolbar>
+  <mat-sidenav-container class="sidenav-container">
+    <mat-sidenav #drawer class="w-60 sm:w-40 mt-3 rounded-tr-xl bg-white h-full">
+
+      <mat-nav-list class="h-full !flex flex-col">
+        <a mat-list-item href="/message" class="block px-3 py-5">Chat Tobias</a>
+        <a mat-list-item href="/message" class="block px-3 py-5">Chat Nina</a>
+        <a mat-list-item href="/message" class="block px-3 py-5">Chat Johann</a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+
