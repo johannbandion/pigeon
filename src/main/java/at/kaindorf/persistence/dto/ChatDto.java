@@ -1,34 +1,26 @@
-package at.kaindorf.persistence.entity;
+package at.kaindorf.persistence.dto;
 
-
-import at.kaindorf.persistence.dto.ChatDto;
+import at.kaindorf.persistence.entity.ChatEntity;
+import at.kaindorf.persistence.entity.UserEntity;
 
 import javax.persistence.*;
 import java.util.Objects;
 import java.util.Set;
 
-@Entity
-public class ChatEntity {
-    @Id
-    @SequenceGenerator(
-            name = "chatEntitySequence",
-            sequenceName = "chatEntitySequence",
-            allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "chatEntitySequence")
+public class ChatDto {
+
     private Integer chatId;
 
-    @ManyToMany(mappedBy = "chatEntities")
     Set<UserEntity> userEntities;
 
-    public ChatEntity() {
+    public ChatDto() {
     }
 
-    public ChatEntity(ChatDto chatDto) {
-        this.chatId = chatDto.getChatId();
-        this.userEntities = chatDto.getUserEntities();
+    public ChatDto(ChatEntity chatEntity) {
+        this.chatId = chatEntity.getChatId();
+        this.userEntities = chatEntity.getUserEntities();
     }
-
-    public ChatEntity(Integer chatId, Set<UserEntity> userEntities) {
+    public ChatDto(Integer chatId, Set<UserEntity> userEntities) {
         this.chatId = chatId;
         this.userEntities = userEntities;
     }
@@ -54,10 +46,10 @@ public class ChatEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ChatEntity that = (ChatEntity) o;
+        ChatDto chatDto = (ChatDto) o;
 
-        if (!Objects.equals(chatId, that.chatId)) return false;
-        return Objects.equals(userEntities, that.userEntities);
+        if (!Objects.equals(chatId, chatDto.chatId)) return false;
+        return Objects.equals(userEntities, chatDto.userEntities);
     }
 
     @Override
@@ -69,7 +61,7 @@ public class ChatEntity {
 
     @Override
     public String toString() {
-        return "ChatEntity{" +
+        return "ChatDto{" +
                 "chatId='" + chatId + '\'' +
                 ", userEntities=" + userEntities +
                 '}';

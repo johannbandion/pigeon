@@ -12,7 +12,7 @@ public class MessagesEntity {
             sequenceName = "package_id_seq",
             allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "packageGroupSequence")
-    private String messageId;
+    private Integer messageId;
 
     @ManyToOne
     @JoinColumn(name = "chatId", nullable = true)
@@ -29,14 +29,16 @@ public class MessagesEntity {
     public MessagesEntity() {
     }
 
-    public MessagesEntity(ChatEntity chatEntity, UserEntity userEntity, String messageText) {
+
+    public MessagesEntity(Integer messageId, ChatEntity chatEntity, UserEntity userEntity, String messageText) {
+        this.messageId = messageId;
         this.chatEntity = chatEntity;
         this.userEntity = userEntity;
-        this.messageText = messageText;
         this.messageTime = LocalDateTime.now();
+        this.messageText = messageText;
     }
 
-    public MessagesEntity(String messageId, ChatEntity chatEntity, UserEntity userEntity, LocalDateTime messageTime, String messageText) {
+    public MessagesEntity(Integer messageId, ChatEntity chatEntity, UserEntity userEntity, LocalDateTime messageTime, String messageText) {
         this.messageId = messageId;
         this.chatEntity = chatEntity;
         this.userEntity = userEntity;
@@ -44,11 +46,11 @@ public class MessagesEntity {
         this.messageText = messageText;
     }
 
-    public String getMessageId() {
+    public Integer getMessageId() {
         return messageId;
     }
 
-    public void setMessageId(String messageId) {
+    public void setMessageId(Integer messageId) {
         this.messageId = messageId;
     }
 
