@@ -9,6 +9,11 @@
 // Be sure that you only ever include this mixin once!
 @include mat.core();
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 $dark-primary-text: rgba(black, 0.87);
 $dark-secondary-text: rgba(black, 0.54);
 $dark-disabled-text: rgba(black, 0.38);
@@ -26,7 +31,7 @@ $sky-palette: (
   200: #9fa8da,
   300: #7986cb,
   400: #5c6bc0,
-  500:  #8bcdfc,
+  500: #8bcdfc,
   600: #3949ab,
   700: #303f9f,
   800: #283593,
