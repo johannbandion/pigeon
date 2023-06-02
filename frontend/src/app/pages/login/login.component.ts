@@ -33,6 +33,10 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log("Logging")
+    console.log("Login")
+  }
+
+  signup() {
+    console.log("Signup")
   }
 }

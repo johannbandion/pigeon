@@ -15,6 +15,7 @@ import {MatListModule} from "@angular/material/list";
 import {MatCardModule} from "@angular/material/card";
 import {MatInputModule} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
+import { AddfriendComponent } from './pages/addfriend/addfriend.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +24,7 @@ import {ReactiveFormsModule} from "@angular/forms";
     ToolbarComponent,
     MessageComponent,
     LoginComponent,
+    AddfriendComponent,
   ],
   imports: [
     BrowserModule,
