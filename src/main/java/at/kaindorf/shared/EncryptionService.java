@@ -1,6 +1,12 @@
 package at.kaindorf.shared;
 
+import at.kaindorf.persistence.dto.UserDto;
+
 import javax.enterprise.context.RequestScoped;
+import javax.ws.rs.InternalServerErrorException;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
 import java.util.HexFormat;
 
@@ -20,4 +26,26 @@ public class EncryptionService {
         random.nextBytes(salt);
         return salt;
     }
+
+    private static MessageDigest getMessageDigest() {
+        MessageDigest messageDigest;
+        try {
+            messageDigest = MessageDigest.getInstance("SHA-512");
+        } catch (NoSuchAlgorithmException e) {
+            throw new InternalServerErrorException("Failed to generate Encryption Service");
+        }
+        return messageDigest;
+    }
+
+    public static String getHashedPassword(String password, byte[] salt) {
+        MessageDigest messageDigest = getMessageDigest();
+
+        messageDigest.update(salt);
+        messageDigest.update(password.getBytes(StandardCharsets.UTF_8));
+
+        byte[] hashedBytes = messageDigest.digest();
+
+        return byteToHex(salt) + ":" + byteToHex(hashedBytes);
+    }
+
 }
