@@ -2,13 +2,17 @@ package at.kaindorf.endpoints.login;
 
 import at.kaindorf.persistence.dto.UserDto;
 import at.kaindorf.persistence.repository.UserRepository;
-import at.kaindorf.shared.EncryptionService;
+import at.kaindorf.shared.sharedModel.Token;
+import io.smallrye.jwt.build.Jwt;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.core.Response;
-import static at.kaindorf.shared.EncryptionService.*;
+import java.util.Arrays;
+import java.util.HashSet;
+
+import static at.kaindorf.shared.sharedService.EncryptionService.isPasswordCorrect;
 
 
 @RequestScoped
@@ -17,16 +21,27 @@ public class LoginService {
     @Inject
     UserRepository userRepository;
 
-    public void signup(UserDto userDto) {
-        userDto.setPassword(encryptPassword(userDto.getPassword()));
-    }
 
-    private String encryptPassword(String password) {
-        if (password == null) {
-            throw new BadRequestException("User supplied has no password", Response.status(400).entity("User supplied has no password").build());
+    public Token login(UserDto userDto) {
+        userDto.setUserName(userDto.getUserName().trim());
+        if (!userRepository.doesUserExist(userDto)) {
+            throw new BadRequestException("User does not exist", Response.status(400).entity("User does not exist").build());
         }
-        return getHashedPassword(password, getSalt());
+        UserDto user = userRepository.getUserDtoByName(userDto.getUserName());
+        throwIfPasswordIsIncorrect(user.getPassword(), userDto.getPassword());
+        return getToken(userDto.getUserName());
     }
 
+    private Token getToken(String name) {
+        String jwt = Jwt.upn(name)
+                .groups(new HashSet<>(Arrays.asList("user")))
+                .sign();
+        return new Token(jwt);
+    }
 
+    public void throwIfPasswordIsIncorrect(String encryptedPassword, String passwordFromRequest) {
+        if (!isPasswordCorrect(encryptedPassword, passwordFromRequest)) {
+            throw new BadRequestException("Password is incorrect", Response.status(400).entity("Password is incorrect").build());
+        }
+    }
 }

@@ -3,12 +3,11 @@ package at.kaindorf.persistence.dto;
 import at.kaindorf.persistence.entity.ChatEntity;
 import at.kaindorf.persistence.entity.UserEntity;
 
-import javax.persistence.Column;
 import java.util.Objects;
 import java.util.Set;
 
 public class UserDto {
-    private String name;
+    private String userName;
     private String password;
     Set<ChatEntity> chatEntities;
 
@@ -16,28 +15,28 @@ public class UserDto {
     }
 
     public UserDto(UserEntity userEntity) {
-        this.name = userEntity.getUserName();
+        this.userName = userEntity.getUserName();
         this.password = userEntity.getPassword();
         this.chatEntities = userEntity.getChatEntities();
     }
 
     public UserDto(String name, String password) {
-        this.name = name;
+        this.userName = name;
         this.password = password;
     }
 
     public UserDto(String name, String password, Set<ChatEntity> chatEntities) {
-        this.name = name;
+        this.userName = name;
         this.password = password;
         this.chatEntities = chatEntities;
     }
 
-    public String getName() {
-        return name;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {
@@ -63,14 +62,14 @@ public class UserDto {
 
         UserDto userDto = (UserDto) o;
 
-        if (!Objects.equals(name, userDto.name)) return false;
+        if (!Objects.equals(userName, userDto.userName)) return false;
         if (!Objects.equals(password, userDto.password)) return false;
         return Objects.equals(chatEntities, userDto.chatEntities);
     }
 
     @Override
     public int hashCode() {
-        int result = name != null ? name.hashCode() : 0;
+        int result = userName != null ? userName.hashCode() : 0;
         result = 31 * result + (password != null ? password.hashCode() : 0);
         result = 31 * result + (chatEntities != null ? chatEntities.hashCode() : 0);
         return result;
@@ -79,7 +78,7 @@ public class UserDto {
     @Override
     public String toString() {
         return "UserDto{" +
-                "name='" + name + '\'' +
+                "name='" + userName + '\'' +
                 ", password='" + password + '\'' +
                 ", chatEntities=" + chatEntities +
                 '}';
