@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {AuthService} from "../../shared/auth.service";
 
 @Component({
   selector: 'app-toolbar',
@@ -7,4 +8,11 @@ import { Component } from '@angular/core';
 })
 export class ToolbarComponent {
 
+  constructor(private authService: AuthService) {
+
+  }
+
+  logout() {
+    this.authService.logout();
+  }
 }

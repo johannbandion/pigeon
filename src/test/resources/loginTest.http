@@ -1,3 +1,31 @@
+GET http://localhost:8080/api/addfriend/getUsers
+Authorization: Bearer {{access_token}}
+
+###
+
+POST http://localhost:8080/api/addfriend/
+Authorization: Bearer {{access_token}}
+
+###
+
+POST http://localhost:8080/api/login
+Content-Type: application/json
+
+
+{
+  "userName": "johann@bandion.net",
+  "password": "password"
+}
+
+> {%
+    client.test("Keycloak Access Token successfully received.", function() {
+        client.global.set("access_token", response.body.access_token);
+        client.assert(!!client.global.get("access_token"), "Access Token is not null");
+    });
+%}
+
+###
+
 POST http://localhost:8080/api/login/signup
 Content-Type: application/json
 
@@ -9,11 +37,247 @@ Content-Type: application/json
 
 ####
 
-POST http://localhost:8080/api/login
+POST http://localhost:8080/api/login/signup
 Content-Type: application/json
 
 
 {
-  "userName": "johann@bandion.net",
+  "userName": "Tobias Jamnik",
   "password": "password"
 }
+
+####
+POST http://localhost:8080/api/login/signup
+Content-Type: application/json
+
+
+{
+  "userName": "Tobias Bandion",
+  "password": "password"
+}
+
+####
+POST http://localhost:8080/api/login/signup
+Content-Type: application/json
+
+
+{
+  "userName": "Johann Jamnik",
+  "password": "password"
+}
+
+####
+POST http://localhost:8080/api/login/signup
+Content-Type: application/json
+
+
+{
+  "userName": "Lendard Bandion",
+  "password": "password"
+}
+
+####
+POST http://localhost:8080/api/login/signup
+Content-Type: application/json
+
+
+{
+  "userName": "Johann Okron",
+  "password": "password"
+}
+
+####
+POST http://localhost:8080/api/login/signup
+Content-Type: application/json
+
+
+{
+  "userName": "Lenard Okorn",
+  "password": "password"
+}
+
+####
+POST http://localhost:8080/api/login/signup
+Content-Type: application/json
+
+
+{
+  "userName": "Lenard Jamnik",
+  "password": "password"
+}
+
+####
+POST http://localhost:8080/api/login/signup
+Content-Type: application/json
+
+
+{
+  "userName": "Tobias Okorn",
+  "password": "password"
+}
+
+####
+POST http://localhost:8080/api/login/signup
+Content-Type: application/json
+
+
+{
+  "userName": "Moritz Moritz",
+  "password": "password"
+}
+
+####
+POST http://localhost:8080/api/login/signup
+Content-Type: application/json
+
+
+{
+  "userName": "John Smith",
+  "password": "password"
+}
+
+####
+POST http://localhost:8080/api/login/signup
+Content-Type: application/json
+
+
+{
+  "userName": "Emma Johnson",
+  "password": "password"
+}
+
+####
+POST http://localhost:8080/api/login/signup
+Content-Type: application/json
+
+
+{
+  "userName": "Michael Brown",
+  "password": "password"
+}
+
+####
+POST http://localhost:8080/api/login/signup
+Content-Type: application/json
+
+
+{
+  "userName": "Sophia Davis",
+  "password": "password"
+}
+
+####
+POST http://localhost:8080/api/login/signup
+Content-Type: application/json
+
+
+{
+  "userName": "William Miller",
+  "password": "password"
+}
+
+####
+POST http://localhost:8080/api/login/signup
+Content-Type: application/json
+
+
+{
+  "userName": "Olivia Wilson",
+  "password": "password"
+}
+
+####
+POST http://localhost:8080/api/login/signup
+Content-Type: application/json
+
+
+{
+  "userName": "James Anderson",
+  "password": "password"
+}
+
+####
+POST http://localhost:8080/api/login/signup
+Content-Type: application/json
+
+
+{
+  "userName": "Ava Taylor",
+  "password": "password"
+}
+
+####
+POST http://localhost:8080/api/login/signup
+Content-Type: application/json
+
+
+{
+  "userName": "Benjamin Martinez",
+  "password": "password"
+}
+
+####
+POST http://localhost:8080/api/login/signup
+Content-Type: application/json
+
+
+{
+  "userName": "Isabella Thompson",
+  "password": "password"
+}
+
+####
+POST http://localhost:8080/api/login/signup
+Content-Type: application/json
+
+
+{
+  "userName": "Daniel Lewis",
+  "password": "password"
+}
+
+####
+POST http://localhost:8080/api/login/signup
+Content-Type: application/json
+
+
+{
+  "userName": "Mia Clark",
+  "password": "password"
+}
+
+####
+POST http://localhost:8080/api/login/signup
+Content-Type: application/json
+
+
+{
+  "userName": "Joseph Rodriguez",
+  "password": "password"
+}
+
+####
+POST http://localhost:8080/api/login/signup
+Content-Type: application/json
+
+
+{
+  "userName": "Charlotte Lee",
+  "password": "password"
+}
+
+####
+POST http://localhost:8080/api/login/signup
+Content-Type: application/json
+
+
+{
+  "userName": "Henry Hernandez",
+  "password": "password"
+}
+
+####
+
+
+####
+

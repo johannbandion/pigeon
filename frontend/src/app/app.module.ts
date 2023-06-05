@@ -18,8 +18,9 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { AddfriendComponent } from './pages/addfriend/addfriend.component';
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
-import {HttpClientModule} from "@angular/common/http";
+import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {MatDialogModule} from "@angular/material/dialog";
+import {AuthInterceptor} from "./core/auth.interceptor";
 
 @NgModule({
   declarations: [
@@ -48,7 +49,11 @@ import {MatDialogModule} from "@angular/material/dialog";
     HttpClientModule,
     MatDialogModule,
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

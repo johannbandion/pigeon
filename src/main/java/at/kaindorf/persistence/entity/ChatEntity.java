@@ -15,7 +15,7 @@ public class ChatEntity {
             sequenceName = "chatEntitySequence",
             allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "chatEntitySequence")
-    private Integer chatId;
+    private Long chatId;
 
     @ManyToMany(mappedBy = "chatEntities")
     Set<UserEntity> userEntities;
@@ -28,16 +28,15 @@ public class ChatEntity {
         this.userEntities = chatDto.getUserEntities();
     }
 
-    public ChatEntity(Integer chatId, Set<UserEntity> userEntities) {
-        this.chatId = chatId;
+    public ChatEntity(Set<UserEntity> userEntities) {
         this.userEntities = userEntities;
     }
 
-    public Integer getChatId() {
+    public Long getChatId() {
         return chatId;
     }
 
-    public void setChatId(Integer chatId) {
+    public void setChatId(Long chatId) {
         this.chatId = chatId;
     }
 
@@ -48,6 +47,8 @@ public class ChatEntity {
     public void setUserEntities(Set<UserEntity> userEntities) {
         this.userEntities = userEntities;
     }
+
+
 
     @Override
     public boolean equals(Object o) {

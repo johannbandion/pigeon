@@ -1,5 +1,6 @@
 import {EventEmitter, Injectable, Output} from '@angular/core';
 import jwt_decode from "jwt-decode";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -8,11 +9,11 @@ export class AuthService {
 
   @Output() loginEventEmitter: EventEmitter<boolean> = new EventEmitter();
 
-  constructor() { }
+  constructor(private router: Router ) { }
 
   public isLoggedIn() {
     const access_token = localStorage.getItem('access_token')
-    return (!access_token);
+    return (access_token !== null && access_token !== undefined);
   }
 
   public isLoggedOut() {
@@ -27,6 +28,11 @@ export class AuthService {
     }
   }
 
+  public getJWT(): string | undefined {
+    const token = localStorage.getItem('access_token');
+    return token ? token : undefined;
+  }
+
   public getDecodedAccessToken(): string | undefined {
     const token = localStorage.getItem('access_token');
     const decodedToken = this.decodedAccessToken(token ? token : '');
@@ -38,5 +44,11 @@ export class AuthService {
     const token = localStorage.getItem('access_token');
     const decodedToken = this.decodedAccessToken(token ? token : '');
     return decodedToken ? decodedToken.upn : undefined;
+  }
+
+  logout() {
+    localStorage.removeItem('access_token');
+    this.loginEventEmitter.emit(this.isLoggedIn());
+    this.router.navigate(['/login']);
   }
 }

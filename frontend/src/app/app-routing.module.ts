@@ -6,6 +6,7 @@ import {AddfriendComponent} from "./pages/addfriend/addfriend.component";
 import {AuthGuard} from "./core/auth.guard";
 
 const routes: Routes = [
+  {path: '', component: AddfriendComponent, pathMatch: 'full', canActivate: [AuthGuard]},
   {path: 'message', component: MessageComponent},
   {path: 'login', component: LoginComponent},
   {path: 'addfriend', component: AddfriendComponent,  canActivate: [AuthGuard]}

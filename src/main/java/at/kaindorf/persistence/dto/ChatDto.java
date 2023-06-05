@@ -3,13 +3,12 @@ package at.kaindorf.persistence.dto;
 import at.kaindorf.persistence.entity.ChatEntity;
 import at.kaindorf.persistence.entity.UserEntity;
 
-import javax.persistence.*;
 import java.util.Objects;
 import java.util.Set;
 
 public class ChatDto {
 
-    private Integer chatId;
+    private Long chatId;
 
     Set<UserEntity> userEntities;
 
@@ -20,16 +19,16 @@ public class ChatDto {
         this.chatId = chatEntity.getChatId();
         this.userEntities = chatEntity.getUserEntities();
     }
-    public ChatDto(Integer chatId, Set<UserEntity> userEntities) {
+    public ChatDto(Long chatId, Set<UserEntity> userEntities) {
         this.chatId = chatId;
         this.userEntities = userEntities;
     }
 
-    public Integer getChatId() {
+    public Long getChatId() {
         return chatId;
     }
 
-    public void setChatId(Integer chatId) {
+    public void setChatId(Long chatId) {
         this.chatId = chatId;
     }
 

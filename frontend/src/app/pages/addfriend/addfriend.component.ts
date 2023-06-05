@@ -27,27 +27,30 @@ export class AddfriendComponent implements OnInit{
 
   constructor(
     // private snackBar: MatSnackBar,
-    private friendService: AddfriendService,
+    private addfriendService: AddfriendService,
     private dialog: MatDialog) {
   }
 
   ngOnInit(): void{
-    this.friendService.getFriends('', this.page, this.pageSize).subscribe(response => {
+    this.addfriendService.getFriends('', this.page, this.pageSize).subscribe(response => {
       this.length = Number(response.headers.get('X-Total-Count')) || 0;
       this.users = response.body as UserEntity[];
       this.dataSource = new MatTableDataSource<UserEntity>(this.users);
     })
   }
 
-  openAddFriendPopup(){
-    console.log("Add friend");
+  addFriend(userName: string){
+    console.log(userName);
+    this.addfriendService.addFriend(userName).subscribe(response => {
+      //this.snackBar.open("Friend added", "OK", {duration: 2000});
+    })
   }
 
   handlePageEvent(event: PageEvent) {
     this.page = event.pageIndex + 1;
     this.pageSize = event.pageSize;
 
-    this.friendService.getFriends('', event.pageIndex + 1, event.pageSize).subscribe(response => {
+    this.addfriendService.getFriends('', event.pageIndex + 1, event.pageSize).subscribe(response => {
       this.length = Number(response.headers.get('X-Total-Count')) || 0;
       this.users = response.body as UserEntity[];
       this.dataSource = new MatTableDataSource<UserEntity>(this.users);
@@ -56,7 +59,7 @@ export class AddfriendComponent implements OnInit{
 
   searched(event: Event) {
     this.page = 1;
-    this.friendService
+    this.addfriendService
       .getFriends(this.searchString, this.page, this.pageSize)
       .subscribe(
         {
