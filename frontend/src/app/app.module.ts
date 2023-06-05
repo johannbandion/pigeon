@@ -14,8 +14,12 @@ import { MatSidenavModule} from "@angular/material/sidenav";
 import {MatListModule} from "@angular/material/list";
 import {MatCardModule} from "@angular/material/card";
 import {MatInputModule} from "@angular/material/input";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { AddfriendComponent } from './pages/addfriend/addfriend.component';
+import {MatTableModule} from "@angular/material/table";
+import {MatPaginatorModule} from "@angular/material/paginator";
+import {HttpClientModule} from "@angular/common/http";
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -38,6 +42,11 @@ import { AddfriendComponent } from './pages/addfriend/addfriend.component';
     MatCardModule,
     MatInputModule,
     ReactiveFormsModule,
+    MatTableModule,
+    FormsModule,
+    MatPaginatorModule,
+    HttpClientModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
