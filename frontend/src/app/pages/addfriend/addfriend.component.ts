@@ -23,7 +23,7 @@ export class AddfriendComponent implements OnInit{
   dataSource: MatTableDataSource<UserEntity> | undefined;
 
   @ViewChild(MatPaginator) paginator?: MatPaginator;
-  displayedColumns: string[] = ['Employee', 'Packages'];
+  displayedColumns: string[] = ['user', "add"];
 
   constructor(
     // private snackBar: MatSnackBar,
