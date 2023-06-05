@@ -39,4 +39,14 @@ export class LoginService {
     let decodedAccessToken = this.authService.decodedAccessToken(res.access_token);
     localStorage.setItem('access_token', res.access_token);
   }
+
+  signup(name: string, password: string) {
+    const body: UserDto = {
+      chatEntities: undefined,
+      userName: name,
+      password: password
+    }
+
+    return this.http.post<Token>(environment.apiPath + '/login/signup', body, {observe: 'response'})
+  }
 }

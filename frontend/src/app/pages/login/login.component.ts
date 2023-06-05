@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
     this.loginForm = this.fb.group({
       // email: ['', Validators.required],
       // password: ['', Validators.required]
-      email: ['', Validators.required],
+      userName: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
@@ -35,10 +35,12 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    const loginFormValue = this.loginForm.value;
+    const {password, userName} = this.loginForm.value;
 
-    if (loginFormValue.email && loginFormValue.password) {
-      this.loginService.login(loginFormValue.email, loginFormValue.password)
+
+
+    if (userName && password) {
+      this.loginService.login(userName, password)
         .subscribe({
             next: (_) => {
               let redirectUrl = '/';
@@ -53,6 +55,19 @@ export class LoginComponent implements OnInit {
   }
 
   signup() {
-    console.log("Signup")
+    const {password, userName} = this.loginForm.value;
+
+    if (userName && password) {
+
+      this.loginService.signup(userName, userName).subscribe({
+          next: (_) => {
+            this.login()
+          },
+          error: (error) => {
+            this.invalidLogin = true;
+          }
+        }
+      );
+    }
   }
 }
