@@ -1,7 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
 
-interface UserEntity {
+export interface UserEntity {
   name: string | undefined;
   password: string | undefined;
 }

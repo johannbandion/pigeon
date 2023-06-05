@@ -4,6 +4,7 @@ import {MatPaginator, PageEvent} from "@angular/material/paginator";
 // import {MatSnackBar} from "@angular/material/snack-bar";
 import {AddfriendService} from "./addfriend.service";
 import {MatDialog} from "@angular/material/dialog";
+import {UserEntity} from "../../model/model";
 
 @Component({
   selector: 'app-addfriend',
@@ -22,7 +23,7 @@ export class AddfriendComponent implements OnInit{
   dataSource: MatTableDataSource<UserEntity> | undefined;
 
   @ViewChild(MatPaginator) paginator?: MatPaginator;
-  displayedColumns: string[] = ['Employee', 'Packages'];
+  displayedColumns: string[] = ['user', "add"];
 
   constructor(
     // private snackBar: MatSnackBar,

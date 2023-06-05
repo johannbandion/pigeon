@@ -15,11 +15,11 @@ import java.util.Optional;
 @RequestScoped
 public class UserRepository implements PanacheRepository<UserEntity> {
     public List<UserDto> getAllUsers(){
-        return findAll(Sort.ascending("name")).stream().map(UserDto::new).collect(Collectors.toList());
+        return findAll(Sort.ascending("username")).stream().map(UserDto::new).collect(Collectors.toList());
     }
 
     public List<UserEntity> searchUsers(String searchString){
-        return find("lower(name) like lower(CONCAT('%', ?1 ,'%')) order by last_name", searchString).list();
+        return find("lower(username) like lower(CONCAT('%', ?1 ,'%')) order by username", searchString).list();
     }
 
     @Transactional
