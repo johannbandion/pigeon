@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {MessageComponent} from "./message/message.component";
+import {MessageComponent} from "./pages/message/message.component";
 import {LoginComponent} from "./pages/login/login.component";
 import {AddfriendComponent} from "./pages/addfriend/addfriend.component";
 

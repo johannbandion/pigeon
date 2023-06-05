@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator, PageEvent} from "@angular/material/paginator";
 // import {MatSnackBar} from "@angular/material/snack-bar";
-import {AddFriendService} from "./add-friend.service";
+import {AddfriendService} from "./addfriend.service";
 import {MatDialog} from "@angular/material/dialog";
 
 @Component({
@@ -26,7 +26,7 @@ export class AddfriendComponent implements OnInit{
 
   constructor(
     // private snackBar: MatSnackBar,
-    private friendService: AddFriendService,
+    private friendService: AddfriendService,
     private dialog: MatDialog) {
   }
 

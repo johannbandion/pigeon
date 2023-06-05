@@ -5,13 +5,13 @@ import {environment} from "../../../environments/environment";
 @Injectable({
   providedIn: 'root'
 })
-export class AddFriendService {
+export class AddfriendService {
 
   constructor(private http: HttpClient) { }
 
   getFriends(search: string, page: number, pageSize: number){
     return this.http.get<UserEntity[]>(
-      environment.apiPath + '/friends/getUsers?search=' + search + '&page=' + page + '&size=' + pageSize,
+      environment.apiPath + '/addfriends/getUsers?search=' + search + '&page=' + page + '&size=' + pageSize,
       {observe: 'response'}
     )
   }

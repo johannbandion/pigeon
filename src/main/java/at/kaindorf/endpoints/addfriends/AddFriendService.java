@@ -1,4 +1,4 @@
-package at.kaindorf.endpoints.fiends;
+package at.kaindorf.endpoints.addfriends;
 
 import at.kaindorf.persistence.dto.UserDto;
 import at.kaindorf.persistence.entity.UserEntity;
@@ -10,7 +10,7 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 @RequestScoped
-public class FriendService {
+public class AddFriendService {
     @Inject
     UserRepository userRepository;
 
@@ -29,8 +29,7 @@ public class FriendService {
                     .header("X-Total-Count", 0)
                     .entity("Page does not exist").build();
         }
-        Response response = Response.ok(userList).header("X-Total-Count", length).build();
-        return response;
+        return Response.ok(userList).header("X-Total-Count", length).build();
     }
 
     public List<UserEntity> searchUsers(String search, Integer pageSize, Integer page) {
