@@ -15,13 +15,8 @@ public class AddFriendRest {
 
     @GET
     @Path("/getUsers")
-    public Response getFriends(@QueryParam("search") String search, @QueryParam("page") Integer page, @QueryParam("size") Integer pageSize) {
+    public Response getUsers(@QueryParam("search") String search, @QueryParam("page") Integer page, @QueryParam("size") Integer pageSize) {
         return friendService.getUsers(search, pageSize, page);
     }
 
-    @GET
-    @Path("/test")
-    public Response getAllUsers() {
-        return Response.ok().build();
-    }
 }
