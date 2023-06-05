@@ -1,4 +1,4 @@
-package at.kaindorf.shared;
+package at.kaindorf.shared.sharedService;
 
 import at.kaindorf.persistence.dto.UserDto;
 
@@ -48,4 +48,14 @@ public class EncryptionService {
         return byteToHex(salt) + ":" + byteToHex(hashedBytes);
     }
 
+    public static byte[] extractSalt(String encryptedPassword) {
+        String saltHexString = encryptedPassword.split(":")[0];
+        return hexToByte(saltHexString);
+    }
+
+    public static boolean isPasswordCorrect(String encryptedPassword, String password) {
+        byte[] salt = extractSalt(encryptedPassword);
+        String hashedPassword = getHashedPassword(password, salt);
+        return hashedPassword.equals(encryptedPassword);
+    }
 }

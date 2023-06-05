@@ -24,7 +24,7 @@ public class UserEntity {
     }
 
     public UserEntity(UserDto userDto) {
-        this.userName = userDto.getName();
+        this.userName = userDto.getUserName();
         this.password = userDto.getPassword();
         this.chatEntities = userDto.getChatEntities();
     }

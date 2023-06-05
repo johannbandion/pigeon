@@ -1,0 +1,19 @@
+POST http://localhost:8080/api/login/signup
+Content-Type: application/json
+
+
+{
+  "userName": "johann@bandion.net",
+  "password": "password"
+}
+
+####
+
+POST http://localhost:8080/api/login
+Content-Type: application/json
+
+
+{
+  "userName": "johann@bandion.net",
+  "password": "password"
+}
