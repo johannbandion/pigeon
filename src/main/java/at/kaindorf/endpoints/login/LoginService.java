@@ -23,6 +23,12 @@ public class LoginService {
 
 
     public Token login(UserDto userDto) {
+        if (userDto.getUserName() == null ) {
+            throw new BadRequestException("Username is undefined", Response.status(400).entity("Username is undefined").build());
+        }
+        if (userDto.getPassword() == null) {
+            throw new BadRequestException("Password is undefined", Response.status(400).entity("Password is undefined").build());
+        }
         userDto.setUserName(userDto.getUserName().trim());
         if (!userRepository.doesUserExist(userDto)) {
             throw new BadRequestException("User does not exist", Response.status(400).entity("User does not exist").build());

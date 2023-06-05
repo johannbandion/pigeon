@@ -1,5 +1,9 @@
 -- insert into USERS (name, password) values ('Johann Bandion', 'password');
 
+INSERT INTO public.userentity (username, password)
+VALUES ('johann@bandion.net',
+        '638fe88be84db22fc1e7d5c2dd47303f:59ab16e2492de032ccdfc8f9934f85bac7713833df6683ecc1707e18cdd48f7a89e19269a5916daaa399b650178ea9a936b5780384ba46f73d7bcc554b3ce01f');
+
 insert into UserEntity (userName, password) values ('Johann Bandion', 'password');
 insert into UserEntity (userName, password) values ('Tobias Jamnik', 'password');
 insert into UserEntity (userName, password) values ('Tobias Bandion', 'password');
