@@ -1,4 +1,4 @@
-package at.kaindorf.endpoints.addfriends;
+package at.kaindorf.endpoints.addfriend;
 
 import at.kaindorf.persistence.dto.UserDto;
 import at.kaindorf.persistence.entity.UserEntity;

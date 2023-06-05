@@ -1,4 +1,4 @@
-package at.kaindorf.endpoints.addfriends;
+package at.kaindorf.endpoints.addfriend;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -7,7 +7,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Response;
 
-@Path("/addfriends")
+@Path("/addfriend")
 @RequestScoped
 public class AddFriendRest {
     @Inject
