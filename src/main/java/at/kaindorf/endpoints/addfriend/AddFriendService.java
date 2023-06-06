@@ -2,10 +2,12 @@ package at.kaindorf.endpoints.addfriend;
 
 import at.kaindorf.persistence.dto.UserDto;
 import at.kaindorf.persistence.entity.UserEntity;
+import at.kaindorf.persistence.repository.ChatRepository;
 import at.kaindorf.persistence.repository.UserRepository;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
+import javax.ws.rs.BadRequestException;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
@@ -13,6 +15,9 @@ import java.util.List;
 public class AddFriendService {
     @Inject
     UserRepository userRepository;
+
+    @Inject
+    ChatRepository chatRepository;
 
     public Response getUsers(String search, Integer pageSize, Integer page){
         List<UserEntity> userList = searchUsers(search, pageSize, page);
@@ -63,6 +68,25 @@ public class AddFriendService {
             }
         } else {
             return users;
+        }
+    }
+
+    public void addFriend(String user, String friend) {
+        evaluateRequest(user, friend);
+        Long chatId = chatRepository.createChat();
+        userRepository.addChat(chatId, user);
+        userRepository.addChat(chatId, friend);
+    }
+
+    private void evaluateRequest(String user, String friend) {
+        if (user.equals(friend)) {
+            throw new BadRequestException("You cannot add yourself as a friend.", Response.status(Response.Status.BAD_REQUEST).entity("You cannot add yourself as a friend.").build());
+        }
+        if (friend.isEmpty()) {
+            throw new BadRequestException("You cannot add an empty friend.", Response.status(Response.Status.BAD_REQUEST).entity("You cannot add an empty friend.").build());
+        }
+        if (!userRepository.doesUserExistByString(friend)) {
+            throw new BadRequestException("The user you want to add as a friend does not exist.", Response.status(Response.Status.BAD_REQUEST).entity("The user you want to add as a friend does not exist.").build());
         }
     }
 }

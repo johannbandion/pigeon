@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {LoginService} from "./login.service";
+import {AuthService} from "../../shared/auth.service";
 
 
 
@@ -16,15 +18,15 @@ export class LoginComponent implements OnInit {
   invalidLogin: boolean = false;
 
   constructor(private fb: FormBuilder,
-              // private authService: AuthService,
               private router: Router,
-              // private navbarService: ToolbarService
+              private loginService: LoginService,
+              private authService: AuthService
   ) {
     this.loginForm = this.fb.group({
       // email: ['', Validators.required],
       // password: ['', Validators.required]
-      email: [''],
-      password: ['']
+      userName: ['', Validators.required],
+      password: ['', Validators.required]
     });
   }
 
@@ -33,10 +35,39 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log("Login")
+    const {password, userName} = this.loginForm.value;
+
+
+
+    if (userName && password) {
+      this.loginService.login(userName, password)
+        .subscribe({
+            next: (_) => {
+              let redirectUrl = '/';
+              this.router.navigateByUrl(redirectUrl);
+            },
+            error: (error) => {
+              this.invalidLogin = true;
+            }
+          }
+        );
+    }
   }
 
   signup() {
-    console.log("Signup")
+    const {password, userName} = this.loginForm.value;
+
+    if (userName && password) {
+
+      this.loginService.signup(userName, userName).subscribe({
+          next: (_) => {
+            this.login()
+          },
+          error: (error) => {
+            this.invalidLogin = true;
+          }
+        }
+      );
+    }
   }
 }

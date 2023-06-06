@@ -23,6 +23,7 @@ public class LoginService {
 
 
     public Token login(UserDto userDto) {
+        checkForNull(userDto);
         userDto.setUserName(userDto.getUserName().trim());
         if (!userRepository.doesUserExist(userDto)) {
             throw new BadRequestException("User does not exist", Response.status(400).entity("User does not exist").build());
@@ -32,8 +33,19 @@ public class LoginService {
         return getToken(userDto.getUserName());
     }
 
+    private static void checkForNull(UserDto userDto) {
+        if (userDto.getUserName() == null ) {
+            throw new BadRequestException("Username is undefined", Response.status(400).entity("Username is undefined").build());
+        }
+        if (userDto.getPassword() == null) {
+            throw new BadRequestException("Password is undefined", Response.status(400).entity("Password is undefined").build());
+        }
+    }
+
     private Token getToken(String name) {
-        String jwt = Jwt.upn(name)
+        String jwt = Jwt.issuer("http://localhost:8080/api/login")
+                .upn(name)
+                .expiresIn(9007199254740991L)
                 .groups(new HashSet<>(Arrays.asList("user")))
                 .sign();
         return new Token(jwt);
