@@ -1,0 +1,20 @@
+.message__text {
+  border-radius: 20px;
+  padding: 8px 15px;
+  margin-top: 1vh;
+  margin-left: 1vw;
+  border-bottom-right-radius: 15px;
+}
+
+.friend.message__text {
+  margin-right: 25%;
+  background: #eee;
+  position: relative;
+}
+
+.user.message__text {
+  margin-left: 25%;
+  background: rgb(139, 205, 252);
+  position: relative;
+}
+

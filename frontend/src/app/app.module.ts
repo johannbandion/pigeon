@@ -20,6 +20,7 @@ import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {HttpClientModule} from "@angular/common/http";
 import {MatDialogModule} from "@angular/material/dialog";
+import { SingleMessageComponent } from './pages/single-message/single-message.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import {MatDialogModule} from "@angular/material/dialog";
     MessageComponent,
     LoginComponent,
     AddfriendComponent,
+    SingleMessageComponent,
   ],
   imports: [
     BrowserModule,
