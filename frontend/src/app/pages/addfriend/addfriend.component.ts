@@ -19,8 +19,8 @@ export class AddfriendComponent implements OnInit{
   length = 0;
   pageSize = 10;
   page = 1;
-  users?: UserEntity[];
-  dataSource: MatTableDataSource<UserEntity> | undefined;
+  users?: String[];
+  dataSource: MatTableDataSource<String> | undefined;
 
   @ViewChild(MatPaginator) paginator?: MatPaginator;
   displayedColumns: string[] = ['user', "add"];
@@ -34,8 +34,8 @@ export class AddfriendComponent implements OnInit{
   ngOnInit(): void{
     this.addfriendService.getFriends('', this.page, this.pageSize).subscribe(response => {
       this.length = Number(response.headers.get('X-Total-Count')) || 0;
-      this.users = response.body as UserEntity[];
-      this.dataSource = new MatTableDataSource<UserEntity>(this.users);
+      this.users = response.body as String[];
+      this.dataSource = new MatTableDataSource<String>(this.users);
     })
   }
 
@@ -52,8 +52,8 @@ export class AddfriendComponent implements OnInit{
 
     this.addfriendService.getFriends('', event.pageIndex + 1, event.pageSize).subscribe(response => {
       this.length = Number(response.headers.get('X-Total-Count')) || 0;
-      this.users = response.body as UserEntity[];
-      this.dataSource = new MatTableDataSource<UserEntity>(this.users);
+      this.users = response.body as String[];
+      this.dataSource = new MatTableDataSource<String>(this.users);
     });
   }
 
@@ -68,13 +68,13 @@ export class AddfriendComponent implements OnInit{
               this.paginator.pageIndex = 0;
             }
             this.length = Number(response.headers.get('X-Total-Count')) || 0;
-            this.users = response.body as UserEntity[];
-            this.dataSource = new MatTableDataSource<UserEntity>(this.users);
+            this.users = response.body as String[];
+            this.dataSource = new MatTableDataSource<String>(this.users);
           }),
           error: (response => {
             this.length = Number(response.headers.get('X-Total-Count')) || 0;
             this.users = [];
-            this.dataSource = new MatTableDataSource<UserEntity>(this.users);
+            this.dataSource = new MatTableDataSource<String>(this.users);
           })
         });
   }

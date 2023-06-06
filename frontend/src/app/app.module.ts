@@ -20,8 +20,8 @@ import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {MatDialogModule} from "@angular/material/dialog";
-import { SingleMessageComponent } from './pages/single-message/single-message.component';
 import {AuthInterceptor} from "./core/auth.interceptor";
+import {SingleMessageComponent} from "./pages/single-message/single-message.component";
 
 @NgModule({
   declarations: [
@@ -31,7 +31,7 @@ import {AuthInterceptor} from "./core/auth.interceptor";
     MessageComponent,
     LoginComponent,
     AddfriendComponent,
-    SingleMessageComponent,
+    SingleMessageComponent
   ],
   imports: [
     BrowserModule,

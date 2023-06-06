@@ -9,6 +9,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.BadRequestException;
 import javax.ws.rs.core.Response;
+import java.util.LinkedList;
 import java.util.List;
 
 @RequestScoped
@@ -34,7 +35,11 @@ public class AddFriendService {
                     .header("X-Total-Count", 0)
                     .entity("Page does not exist").build();
         }
-        return Response.ok(userList).header("X-Total-Count", length).build();
+        List<String> users = new LinkedList<>();
+        for (UserEntity user : userList){
+            users.add(user.getUserName());
+        }
+        return Response.ok(users).header("X-Total-Count", length).build();
     }
 
     public List<UserEntity> searchUsers(String search, Integer pageSize, Integer page) {

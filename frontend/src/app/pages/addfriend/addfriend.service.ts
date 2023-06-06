@@ -12,7 +12,7 @@ export class AddfriendService {
   }
 
   getFriends(search: string, page: number, pageSize: number) {
-    return this.http.get<UserEntity[]>(
+    return this.http.get<String[]>(
       environment.apiPath + '/addfriend/getUsers?search=' + search + '&page=' + page + '&size=' + pageSize,
       {observe: 'response'}
     )
