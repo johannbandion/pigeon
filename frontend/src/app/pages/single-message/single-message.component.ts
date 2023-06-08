@@ -1,16 +1,13 @@
-import {Component} from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-single-message',
   templateUrl: './single-message.component.html',
   styleUrls: ['./single-message.component.scss']
 })
-export class SingleMessageComponent{
-  isFriendMessage: boolean = true;
-  messageText: string = "";
+export class SingleMessageComponent {
+  @Input() message: string | undefined;
+  @Input() isFriendMessage: boolean | undefined;
 
-  constructor() {
-    this.isFriendMessage = true; // Set this based on your logic
-    this.messageText = "message"; // Set the variable text based on your requirements
-  }
+  constructor() {}
 }

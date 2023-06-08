@@ -1,20 +1,7 @@
-.message__text {
-  border-radius: 20px;
-  padding: 8px 15px;
-  margin-top: 1vh;
-  margin-left: 1vw;
-  border-bottom-right-radius: 15px;
+.friend_message__text{
+  @apply w-fit mr-5 bg-gray-200 relative rounded-lg p-2 md:p-4 my-2 ml-5 rounded-br-md;
 }
 
-.friend.message__text {
-  margin-right: 25%;
-  background: #eee;
-  position: relative;
+.user_message__text {
+  @apply flex justify-end w-fit bg-blue-300 relative rounded-lg p-2 my-2 ml-auto rounded-br-lg;
 }
-
-.user.message__text {
-  margin-left: 25%;
-  background: rgb(139, 205, 252);
-  position: relative;
-}
-

@@ -1,20 +1,8 @@
 <div class="chat">
-  <div class="friend message__text">
-    Hi!
-  </div>
-  <div class="user message__text">
-    Hey
-  </div>
-  <div class="friend message__text">
-    Und mit dem Auto ins Fitnessstudio
-  </div>
-  <div class="user message__text">
-    um da Rad zu fahren?
-  </div>
-  <div class="friend message__text last">
-    Mit dem Auto im Bioladen
-  </div>
-  <div class="user message__text last">
-    kaufst du regional?
-  </div>
+  <app-single-message [message]="'Hi!'" [isFriendMessage]="true"></app-single-message>
+  <app-single-message [message]="'Hey!'" [isFriendMessage]="false"></app-single-message>
+  <app-single-message [message]="'Und mit dem Auto ins Fitnessstudio!'" [isFriendMessage]="true"></app-single-message>
+  <app-single-message [message]="'um da Rad zu fahren?'" [isFriendMessage]="false"></app-single-message>
+  <app-single-message [message]="'Mit dem Auto im Bioladen'" [isFriendMessage]="true"></app-single-message>
+  <app-single-message [message]="'kaufst du regional'" [isFriendMessage]="false"></app-single-message>
 </div>
