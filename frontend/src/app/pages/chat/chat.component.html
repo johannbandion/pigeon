@@ -1,1 +1,32 @@
-<p>chat works!</p>
+<!--<div class="chat flex flex-col mx-10 h-screen">-->
+<!--  <app-single-message [message]="'Hi!'" [isFriendMessage]="true"></app-single-message>-->
+<!--  <app-single-message [message]="'Hey!'" [isFriendMessage]="false"></app-single-message>-->
+<!--  <app-single-message [message]="'Und mit dem Auto ins Fitnessstudio!'" [isFriendMessage]="true"></app-single-message>-->
+<!--  <app-single-message [message]="'um da Rad zu fahren?'" [isFriendMessage]="false"></app-single-message>-->
+<!--  <app-single-message [message]="'Mit dem Auto im Bioladen'" [isFriendMessage]="true"></app-single-message>-->
+<!--  <app-single-message [message]="'kaufst du regional'" [isFriendMessage]="false"></app-single-message>-->
+
+<!--  <form class="fixed bottom-0 w-3/4">-->
+<!--    <mat-form-field class="w-full">-->
+<!--      <mat-label>Chat</mat-label>-->
+<!--      <input matInput placeholder=". . . ." class="appearance-none py-2 px-3">-->
+<!--    </mat-form-field>-->
+<!--  </form>-->
+<!--</div>-->
+<div class="chat flex flex-col mx-10 h-screen items-center justify-center">
+  <div class="flex-grow w-4/5">
+    <app-single-message [message]="'Hi!'" [isFriendMessage]="true"></app-single-message>
+    <app-single-message [message]="'Hey!'" [isFriendMessage]="false"></app-single-message>
+    <app-single-message [message]="'Und mit dem Auto ins Fitnessstudio!'" [isFriendMessage]="true"></app-single-message>
+    <app-single-message [message]="'um da Rad zu fahren?'" [isFriendMessage]="false"></app-single-message>
+    <app-single-message [message]="'Mit dem Auto im Bioladen'" [isFriendMessage]="true"></app-single-message>
+    <app-single-message [message]="'kaufst du regional'" [isFriendMessage]="false"></app-single-message>
+  </div>
+
+  <form class="fixed bottom-0 w-3/4">
+    <mat-form-field class="w-full">
+      <mat-label>Chat</mat-label>
+      <input matInput placeholder=". . . ." class="appearance-none py-2 px-3">
+    </mat-form-field>
+  </form>
+</div>
