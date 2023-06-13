@@ -21,8 +21,9 @@ import {MatPaginatorModule} from "@angular/material/paginator";
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {MatDialogModule} from "@angular/material/dialog";
 import {AuthInterceptor} from "./core/auth.interceptor";
-import {SingleMessageComponent} from "./pages/single-message/single-message.component";
 import { ChatComponent } from './pages/chat/chat.component';
+import {SingleMessageComponent} from "./pages/single-message/single-message.component";
+
 
 @NgModule({
   declarations: [
@@ -32,8 +33,8 @@ import { ChatComponent } from './pages/chat/chat.component';
     MessageComponent,
     LoginComponent,
     AddfriendComponent,
-    SingleMessageComponent,
-    ChatComponent
+    ChatComponent,
+    SingleMessageComponent
   ],
   imports: [
     BrowserModule,

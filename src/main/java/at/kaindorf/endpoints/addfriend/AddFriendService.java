@@ -78,6 +78,18 @@ public class AddFriendService {
 
     public void addFriend(String user, String friend) {
         evaluateRequest(user, friend);
+        userRepository
+                .getUserDtoByName(user)
+                .getChatEntities()
+                .stream()
+                .filter(chatEntity ->
+                        chatEntity
+                                .getUserEntities()
+                                .stream()
+                                .anyMatch(userEntity -> userEntity.getUserName().equals(friend)))
+                .findFirst().ifPresent(chatEntity -> {
+                    throw new BadRequestException("The user you tried to add is already in your contacts", Response.status(Response.Status.BAD_REQUEST).entity("The user you tried to add is already in your contacts").build());
+                });
         Long chatId = chatRepository.createChat();
         userRepository.addChat(chatId, user);
         userRepository.addChat(chatId, friend);
