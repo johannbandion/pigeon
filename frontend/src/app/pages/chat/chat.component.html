@@ -13,7 +13,7 @@
 <!--    </mat-form-field>-->
 <!--  </form>-->
 <!--</div>-->
-<div class="chat flex flex-col mx-10 h-screen items-center justify-center">
+<div class="chat flex flex-col mx-10 h-4/5 items-center justify-center">
   <div class="flex-grow w-4/5">
     <app-single-message [message]="'Hi!'" [isFriendMessage]="true"></app-single-message>
     <app-single-message [message]="'Hey!'" [isFriendMessage]="false"></app-single-message>
@@ -23,10 +23,10 @@
     <app-single-message [message]="'kaufst du regional'" [isFriendMessage]="false"></app-single-message>
   </div>
 
-  <form class="fixed bottom-0 w-3/4">
+  <form class="fixed bottom-0 w-3/4" [formGroup]="messageForm" (ngSubmit)="submitMessage()">
     <mat-form-field class="w-full">
       <mat-label>Chat</mat-label>
-      <input matInput placeholder=". . . ." class="appearance-none py-2 px-3">
+      <input matInput placeholder=". . . ." formControlName="message">
     </mat-form-field>
   </form>
 </div>
