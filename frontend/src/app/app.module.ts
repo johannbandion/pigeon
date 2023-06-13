@@ -22,6 +22,7 @@ import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {MatDialogModule} from "@angular/material/dialog";
 import {AuthInterceptor} from "./core/auth.interceptor";
 import {SingleMessageComponent} from "./pages/single-message/single-message.component";
+import { ChatComponent } from './pages/chat/chat.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import {SingleMessageComponent} from "./pages/single-message/single-message.comp
     MessageComponent,
     LoginComponent,
     AddfriendComponent,
-    SingleMessageComponent
+    SingleMessageComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
