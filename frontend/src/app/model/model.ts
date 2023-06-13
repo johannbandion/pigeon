@@ -26,3 +26,8 @@ export interface MessageDto {
 export interface Token {
   access_token: string;
 }
+
+export interface Contact {
+  chatId: number;
+  userName: string;
+}
