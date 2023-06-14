@@ -1,5 +1,7 @@
 package at.kaindorf.persistence.entity;
 
+import at.kaindorf.persistence.dto.MessagesDto;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -29,6 +31,13 @@ public class MessagesEntity {
     public MessagesEntity() {
     }
 
+    public MessagesEntity(MessagesDto messagesDto) {
+        this.messageId = messagesDto.getMessageId();
+        this.chatEntity = messagesDto.getChatEntity();
+        this.userEntity = messagesDto.getUserEntity();
+        this.messageTime = messagesDto.getMessageTime();
+        this.messageText = messagesDto.getMessageText();
+    }
 
     public MessagesEntity(Integer messageId, ChatEntity chatEntity, UserEntity userEntity, String messageText) {
         this.messageId = messageId;

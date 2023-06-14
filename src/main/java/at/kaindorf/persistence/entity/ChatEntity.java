@@ -20,6 +20,14 @@ public class ChatEntity {
     @ManyToMany(mappedBy = "chatEntities")
     Set<UserEntity> userEntities;
 
+//    @ManyToOne
+//    @JoinColumn(name = "userName", nullable = true)
+//    private UserEntity userEntity;
+
+    @OneToMany
+    @JoinColumn(name = "messageId", nullable = true)
+    private Set<MessagesEntity> messagesEntities;
+
     public ChatEntity() {
     }
 
@@ -27,6 +35,12 @@ public class ChatEntity {
         this.chatId = chatDto.getChatId();
         this.userEntities = chatDto.getUserEntities();
     }
+
+    public ChatEntity(Long chatId) {
+        this.chatId = chatId;
+    }
+
+
 
     public ChatEntity(Set<UserEntity> userEntities) {
         this.userEntities = userEntities;
@@ -49,6 +63,13 @@ public class ChatEntity {
     }
 
 
+    public Set<MessagesEntity> getMessagesEntities() {
+        return messagesEntities;
+    }
+
+    public void setMessagesEntities(Set<MessagesEntity> messagesEntities) {
+        this.messagesEntities = messagesEntities;
+    }
 
     @Override
     public boolean equals(Object o) {
