@@ -8,6 +8,7 @@ import { Component, Input } from '@angular/core';
 export class SingleMessageComponent {
   @Input() message: string | undefined;
   @Input() isFriendMessage: boolean | undefined;
+  @Input() time: string | undefined;
 
   constructor() {}
 }
