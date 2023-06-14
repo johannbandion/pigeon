@@ -12,7 +12,9 @@ export class ChatComponent {
   }, {});
 
   submitMessage() {
-    console.log(this.messageForm.get("message")?.value);
+    let message = this.messageForm.get("message")?.value
+    console.log(message);
+    this.messageForm.get("message")?.setValue("");
   }
 
 }
