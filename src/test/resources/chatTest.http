@@ -1,0 +1,25 @@
+POST http://localhost:8080/api/login
+Content-Type: application/json
+
+
+{
+  "userName": "johann@bandion.net",
+  "password": "password"
+}
+
+> {%
+    client.test("Keycloak Access Token successfully received.", function() {
+        client.global.set("access_token", response.body.access_token);
+        client.assert(!!client.global.get("access_token"), "Access Token is not null");
+    });
+%}
+
+###
+
+POST http://localhost:8080/api/chat/1
+Authorization: Bearer {{access_token}}
+Content-Type: application/json
+
+{
+  "messageText": "Hello World!"
+}

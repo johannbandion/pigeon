@@ -2,6 +2,7 @@ package at.kaindorf.endpoints.chat;
 
 
 import at.kaindorf.persistence.dto.MessagesDto;
+import org.eclipse.microprofile.jwt.JsonWebToken;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -17,6 +18,9 @@ public class ChatRest {
     @Inject
     ChatService chatService;
 
+    @Inject
+    JsonWebToken jwt;
+
     @GET
     @Path("/{chatId}")
     public List<MessagesDto> getChat(@PathParam("chatId") Long chatId) {
@@ -26,6 +30,7 @@ public class ChatRest {
     @POST
     @Path("/{chatId}")
     public void sendMessge(@PathParam("chatId") Long chatId, MessagesDto messagesDto) {
-        chatService.sendMessage(chatId, messagesDto);
+        String userName = jwt.getClaim("upn".toString()).toString();
+        chatService.sendMessage(chatId, messagesDto, userName);
     }
 }

@@ -54,7 +54,7 @@ public class UserRepository implements PanacheRepository<UserEntity> {
         return getUserByName(friend).isPresent();
     }
 
-    private UserEntity getUserEntityByName(String friend) {
+    public UserEntity getUserEntityByName(String friend) {
         Optional<UserEntity> userEntity = getUserByName(friend);
         if(userEntity.isPresent()) {
             return userEntity.get();

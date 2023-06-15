@@ -3,12 +3,12 @@ package at.kaindorf.persistence.repository;
 import at.kaindorf.persistence.dto.MessagesDto;
 import at.kaindorf.persistence.entity.ChatEntity;
 import at.kaindorf.persistence.entity.MessagesEntity;
+import at.kaindorf.persistence.entity.UserEntity;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.transaction.Transactional;
-import java.util.List;
 
 
 @RequestScoped
@@ -33,9 +33,14 @@ public class ChatRepository implements PanacheRepository<ChatEntity> {
 
 
     @Transactional
-    public void addMessage(Long chatId, MessagesDto messagesDto) {
+    public void addMessage(Long chatId, MessagesDto messagesDto, String userName) {
         ChatEntity chatEntity = getChatById(chatId);
-        chatEntity.getMessagesEntities().add(new MessagesEntity(messagesDto));
-        persist(chatEntity);
+        MessagesEntity messagesEntity = new MessagesEntity(messagesDto);
+        messagesEntity.setChatEntity(chatEntity);
+        UserEntity userEntityByName = userRepository.getUserEntityByName(userName);
+        messagesEntity.setUserEntity(userEntityByName);
+
+        persistAndFlush(chatEntity);
+        System.out.println("ChatEntity: " + chatEntity);
     }
 }
