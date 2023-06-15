@@ -27,6 +27,7 @@ public class ChatService {
 
     public void sendMessage(Long chatId, MessagesDto messagesDto, String userName) {
         messagesDto.setMessageTime(LocalDateTime.now());
-        chatRepository.addMessage(chatId, messagesDto, userName);
+        messagesRepository.addMessage(chatId, messagesDto, userName);
+//        chatRepository.addMessage(chatId, messagesDto, userName);
     }
 }

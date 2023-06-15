@@ -35,12 +35,12 @@ public class ChatRepository implements PanacheRepository<ChatEntity> {
     @Transactional
     public void addMessage(Long chatId, MessagesDto messagesDto, String userName) {
         ChatEntity chatEntity = getChatById(chatId);
+
         MessagesEntity messagesEntity = new MessagesEntity(messagesDto);
         messagesEntity.setChatEntity(chatEntity);
         UserEntity userEntityByName = userRepository.getUserEntityByName(userName);
         messagesEntity.setUserEntity(userEntityByName);
 
         persistAndFlush(chatEntity);
-        System.out.println("ChatEntity: " + chatEntity);
     }
 }

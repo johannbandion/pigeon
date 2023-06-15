@@ -3,6 +3,7 @@ package at.kaindorf.persistence.entity;
 import at.kaindorf.persistence.dto.UserDto;
 
 import javax.persistence.*;
+import java.util.Objects;
 import java.util.Set;
 
 @Entity
@@ -69,9 +70,24 @@ public class UserEntity {
         return "UserEntity{" +
                 "userName='" + userName + '\'' +
                 ", password='" + password + '\'' +
-                ", chatEntities=" + chatEntities +
                 '}';
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
 
+        UserEntity that = (UserEntity) o;
+
+        if (!Objects.equals(userName, that.userName)) return false;
+        return Objects.equals(password, that.password);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = userName != null ? userName.hashCode() : 0;
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        return result;
+    }
 }
