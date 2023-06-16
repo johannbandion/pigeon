@@ -13,6 +13,22 @@
 @tailwind components;
 @tailwind utilities;
 
+//SNACKBAR STYLE
+.snackbar_ok {
+  background: #8bcdfc;
+  color: white;
+}
+
+.snackbar_error {
+  background: #ff0000;
+  color: white;
+}
+
+//makes snackbar button white (default orange)
+snack-bar-container .mat-button-wrapper {
+  color: white;
+}
+
 
 $dark-primary-text: rgba(black, 0.87);
 $dark-secondary-text: rgba(black, 0.54);

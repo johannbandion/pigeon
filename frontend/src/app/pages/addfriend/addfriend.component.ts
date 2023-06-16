@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatTableDataSource} from "@angular/material/table";
 import {MatPaginator, PageEvent} from "@angular/material/paginator";
-// import {MatSnackBar} from "@angular/material/snack-bar";
+import {MatSnackBar} from "@angular/material/snack-bar";
 import {AddfriendService} from "./addfriend.service";
 import {MatDialog} from "@angular/material/dialog";
 import {UserEntity} from "../../model/model";
@@ -12,6 +12,7 @@ import {UserEntity} from "../../model/model";
   styleUrls: ['./addfriend.component.scss']
 })
 export class AddfriendComponent implements OnInit{
+
   toggleSearch: boolean = false;
 
   searchString: string = '';
@@ -26,9 +27,8 @@ export class AddfriendComponent implements OnInit{
   displayedColumns: string[] = ['user', "add"];
 
   constructor(
-    // private snackBar: MatSnackBar,
     private addfriendService: AddfriendService,
-    private dialog: MatDialog) {
+    private snackBar: MatSnackBar) {
   }
 
   ngOnInit(): void{
@@ -41,8 +41,30 @@ export class AddfriendComponent implements OnInit{
 
   addFriend(userName: string){
     console.log(userName);
-    this.addfriendService.addFriend(userName).subscribe(response => {
-      //this.snackBar.open("Friend added", "OK", {duration: 2000});
+    this.addfriendService.addFriend(userName).subscribe({
+      next: (response) => {
+        console.log(response.status);
+        if (response.status == 200) {
+          this.snackBar.open(
+            "Friend added!",
+            "Dismiss",
+            {
+              duration: 2000,
+              panelClass: ['.snackbar_ok']
+            }
+          );
+        }
+      },
+      error: (err) => {
+        this.snackBar
+          .open(
+            err.error || "Failed to add friend!",
+            "Dismiss",
+            {
+              duration: 2000,
+              panelClass: ['.snackbar_error']
+            });
+      }
     })
   }
 

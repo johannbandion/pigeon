@@ -5,10 +5,7 @@ import org.eclipse.microprofile.jwt.JsonWebToken;
 import javax.annotation.security.RolesAllowed;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.Response;
 
 @Path("/addfriend")
@@ -29,8 +26,13 @@ public class AddFriendRest {
 
     @POST
     @RolesAllowed({"user"})
-    public void addFriend(String friend) {
+    public Response addFriend(String friend) {
         Object upn = jwt.getClaim("upn".toString());
-        friendService.addFriend(upn.toString(), friend);
+        try{
+            friendService.addFriend(upn.toString(), friend);
+            return Response.ok().build();
+        } catch (BadRequestException e){
+            throw new BadRequestException(e);
+        }
     }
 }

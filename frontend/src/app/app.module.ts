@@ -23,6 +23,8 @@ import {MatDialogModule} from "@angular/material/dialog";
 import {AuthInterceptor} from "./core/auth.interceptor";
 import { ChatComponent } from './pages/chat/chat.component';
 import {SingleMessageComponent} from "./pages/single-message/single-message.component";
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 
 @NgModule({
@@ -53,6 +55,7 @@ import {SingleMessageComponent} from "./pages/single-message/single-message.comp
     MatPaginatorModule,
     HttpClientModule,
     MatDialogModule,
+    MatSnackBarModule
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS,
