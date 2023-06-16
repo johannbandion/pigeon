@@ -78,22 +78,18 @@ public class ChatEntity {
 
         ChatEntity that = (ChatEntity) o;
 
-        if (!Objects.equals(chatId, that.chatId)) return false;
-        return Objects.equals(userEntities, that.userEntities);
+        return Objects.equals(chatId, that.chatId);
     }
 
     @Override
     public int hashCode() {
-        int result = chatId != null ? chatId.hashCode() : 0;
-        result = 31 * result + (userEntities != null ? userEntities.hashCode() : 0);
-        return result;
+        return chatId != null ? chatId.hashCode() : 0;
     }
 
     @Override
     public String toString() {
         return "ChatEntity{" +
-                "chatId='" + chatId + '\'' +
-                ", userEntities=" + userEntities +
+                "chatId=" + chatId +
                 '}';
     }
 }
