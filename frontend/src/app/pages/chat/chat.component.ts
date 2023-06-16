@@ -1,6 +1,6 @@
 import {Component, Input} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-//import {ChatService} from "./chat.service";
+import {ChatService} from "./chat.service";
 
 @Component({
   selector: 'app-chat',
@@ -9,8 +9,7 @@ import {FormControl, FormGroup, Validators} from "@angular/forms";
 })
 export class ChatComponent {
 
-  //private chatService: ChatService
-  constructor() {
+  constructor(private chatService: ChatService) {
   }
   messageForm = new FormGroup({
     message: new FormControl('', [Validators.minLength(1)])
