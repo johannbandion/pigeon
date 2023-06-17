@@ -50,7 +50,7 @@ export class AddfriendComponent implements OnInit{
             "Dismiss",
             {
               duration: 2000,
-              panelClass: ['.snackbar_ok']
+              panelClass: ['snackbar_ok']
             }
           );
         }
@@ -58,11 +58,11 @@ export class AddfriendComponent implements OnInit{
       error: (err) => {
         this.snackBar
           .open(
-            err.error || "Failed to add friend!",
+            "Failed to add friend: " +err.status,
             "Dismiss",
             {
               duration: 2000,
-              panelClass: ['.snackbar_error']
+              panelClass: ['snackbar_error']
             });
       }
     })
