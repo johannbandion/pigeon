@@ -1,6 +1,8 @@
 package at.kaindorf.persistence.entity;
 
 import at.kaindorf.persistence.dto.MessagesDto;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -11,10 +13,10 @@ import java.util.Objects;
 public class MessagesEntity {
     @Id
     @SequenceGenerator(
-            name = "packageGroupSequence",
-            sequenceName = "package_id_seq",
+            name = "messageSequence",
+            sequenceName = "messageSequence",
             allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "packageGroupSequence")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "messageSequence")
     private Integer messageId;
 
     @ManyToOne

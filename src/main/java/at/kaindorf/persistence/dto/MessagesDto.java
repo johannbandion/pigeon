@@ -3,6 +3,8 @@ package at.kaindorf.persistence.dto;
 import at.kaindorf.persistence.entity.ChatEntity;
 import at.kaindorf.persistence.entity.MessagesEntity;
 import at.kaindorf.persistence.entity.UserEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.time.LocalDateTime;
 import java.util.Objects;
@@ -10,6 +12,7 @@ import java.util.Objects;
 public class MessagesDto {
     private Integer messageId;
 
+    @JsonIgnore
     private ChatEntity chatEntity;
 
     private UserEntity userEntity;

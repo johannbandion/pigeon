@@ -31,3 +31,8 @@ Content-Type: application/json
 {
   "messageText": "Hello World!"
 }
+
+###
+
+GET http://localhost:8080/api/chat/1
+Authorization: Bearer {{access_token}}

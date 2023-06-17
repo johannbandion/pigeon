@@ -22,7 +22,11 @@ public class ChatService {
 
 
     public List<MessagesDto> getChat(Long chatId) {
-        return messagesRepository.getMessagesDtoByChatId(chatId);
+        List<MessagesDto> messagesDtoByChatId = messagesRepository.getMessagesDtoByChatId(chatId);
+        for (MessagesDto messagesDto : messagesDtoByChatId) {
+            messagesDto.getUserEntity().setPassword(null);
+        }
+        return messagesDtoByChatId;
     }
 
     public void sendMessage(Long chatId, MessagesDto messagesDto, String userName) {

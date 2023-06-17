@@ -2,12 +2,17 @@ package at.kaindorf.persistence.dto;
 
 import at.kaindorf.persistence.entity.ChatEntity;
 import at.kaindorf.persistence.entity.UserEntity;
-
+import com.fasterxml.jackson.annotation.JsonInclude;
 import java.util.Objects;
 import java.util.Set;
+import javax.annotation.Nullable;
+
+
 
 public class UserDto {
     private String userName;
+
+
     private String password;
     Set<ChatEntity> chatEntities;
 

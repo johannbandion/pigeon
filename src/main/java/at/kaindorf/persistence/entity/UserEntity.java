@@ -1,12 +1,15 @@
 package at.kaindorf.persistence.entity;
 
 import at.kaindorf.persistence.dto.UserDto;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import javax.persistence.*;
 import java.util.Objects;
 import java.util.Set;
 
 @Entity
+@JsonInclude(JsonInclude.Include.NON_NULL)
 public class UserEntity {
 
     @Id
@@ -19,6 +22,7 @@ public class UserEntity {
             name = "userentity_chatentity",
             joinColumns = @JoinColumn(name = "userName"),
             inverseJoinColumns = @JoinColumn(name = "chatId"))
+    @JsonIgnore
     Set<ChatEntity> chatEntities;
 
     public UserEntity() {

@@ -24,9 +24,9 @@ public class ChatEntity {
 //    @JoinColumn(name = "userName", nullable = true)
 //    private UserEntity userEntity;
 
-    @OneToMany
-    @JoinColumn(name = "messageId", nullable = true)
-    private Set<MessagesEntity> messagesEntities;
+//    @OneToMany
+//    @JoinColumn(name = "messageId", nullable = true)
+//    private Set<MessagesEntity> messagesEntities;
 
     public ChatEntity() {
     }
@@ -63,13 +63,13 @@ public class ChatEntity {
     }
 
 
-    public Set<MessagesEntity> getMessagesEntities() {
-        return messagesEntities;
-    }
-
-    public void setMessagesEntities(Set<MessagesEntity> messagesEntities) {
-        this.messagesEntities = messagesEntities;
-    }
+//    public Set<MessagesEntity> getMessagesEntities() {
+//        return messagesEntities;
+//    }
+//
+//    public void setMessagesEntities(Set<MessagesEntity> messagesEntities) {
+//        this.messagesEntities = messagesEntities;
+//    }
 
     @Override
     public boolean equals(Object o) {
