@@ -1,25 +1,32 @@
 <div class="chat flex flex-col items-center justify-center" style="height: 85%">
-  <div class="flex-auto w-4/5 overflow-y-auto scrollbar-none">
-        <app-single-message [message]="'Hi!'" [isFriendMessage]="true" [time]="'12:10'"></app-single-message>
-        <app-single-message [message]="'Hey!'" [isFriendMessage]="false" [time]="'13:10'"></app-single-message>
-        <app-single-message [message]="'Und mit dem Auto ins Fitnessstudio!'" [isFriendMessage]="true" [time]="'14:10'"></app-single-message>
-        <app-single-message [message]="'um da Rad zu fahren?'" [isFriendMessage]="false" [time]="'15:10'"></app-single-message>
-        <app-single-message [message]="'Mit dem Auto im Bioladen'" [isFriendMessage]="true" [time]="'16:10'"></app-single-message>
-        <app-single-message [message]="'kaufst du regional'" [isFriendMessage]="true" [time]="'17:10'"></app-single-message>
-        <app-single-message [message]="'kaufst du regional'" [isFriendMessage]="true" [time]="'17:11'"></app-single-message>
-        <app-single-message [message]="'kaufst du regional'" [isFriendMessage]="true" [time]="'17:12'"></app-single-message>
-        <app-single-message [message]="'kaufst du regional'" [isFriendMessage]="true" [time]="'17:13'"></app-single-message>
-        <app-single-message [message]="'kaufst du regional'" [isFriendMessage]="true" [time]="'17:14'"></app-single-message>
-        <app-single-message [message]="'kaufst du regional'" [isFriendMessage]="true" [time]="'17:15'"></app-single-message>
-        <app-single-message [message]="'kaufst du regional'" [isFriendMessage]="true" [time]="'17:16'"></app-single-message>
-        <app-single-message [message]="'kaufst du regional'" [isFriendMessage]="true" [time]="'17:17'"></app-single-message>
-        <app-single-message [message]="'kaufst du regional'" [isFriendMessage]="true" [time]="'17:18'"></app-single-message>
-        <app-single-message [message]="'kaufst du regional'" [isFriendMessage]="true" [time]="'17:19'"></app-single-message>
+  <div class="flex-auto w-4/5 overflow-y-auto scrollbar-none" *ngIf="messages">
+<!--        <app-single-message [message]="'Hi!'" [isFriendMessage]="true" [time]="'12:10'"></app-single-message>-->
+<!--        <app-single-message [message]="'Hey!'" [isFriendMessage]="false" [time]="'13:10'"></app-single-message>-->
+<!--        <app-single-message [message]="'Und mit dem Auto ins Fitnessstudio!'" [isFriendMessage]="true" [time]="'14:10'"></app-single-message>-->
+<!--        <app-single-message [message]="'um da Rad zu fahren?'" [isFriendMessage]="false" [time]="'15:10'"></app-single-message>-->
+<!--        <app-single-message [message]="'Mit dem Auto im Bioladen'" [isFriendMessage]="true" [time]="'16:10'"></app-single-message>-->
+<!--        <app-single-message [message]="'kaufst du regional'" [isFriendMessage]="true" [time]="'17:10'"></app-single-message>-->
+<!--        <app-single-message [message]="'kaufst du regional'" [isFriendMessage]="true" [time]="'17:11'"></app-single-message>-->
+<!--        <app-single-message [message]="'kaufst du regional'" [isFriendMessage]="true" [time]="'17:12'"></app-single-message>-->
+<!--        <app-single-message [message]="'kaufst du regional'" [isFriendMessage]="true" [time]="'17:13'"></app-single-message>-->
+<!--        <app-single-message [message]="'kaufst du regional'" [isFriendMessage]="true" [time]="'17:14'"></app-single-message>-->
+<!--        <app-single-message [message]="'kaufst du regional'" [isFriendMessage]="true" [time]="'17:15'"></app-single-message>-->
+<!--        <app-single-message [message]="'kaufst du regional'" [isFriendMessage]="true" [time]="'17:16'"></app-single-message>-->
+<!--        <app-single-message [message]="'kaufst du regional'" [isFriendMessage]="true" [time]="'17:17'"></app-single-message>-->
+<!--        <app-single-message [message]="'kaufst du regional'" [isFriendMessage]="true" [time]="'17:18'"></app-single-message>-->
+        <div *ngFor="let message of this.messages">
+                  <app-single-message
+                    [message]="message.messageText"
+                    [isFriendMessage]="isFriendMessage(message.userEntity?.userName)"
+                    [time]="getFormatedTime(message.messageTime)"></app-single-message>
+
+        </div>
+<!--        <app-single-message [message]="'kaufst du regional'" [isFriendMessage]="true" [time]="'17:19'"></app-single-message>-->
   </div>
   <form class="flex-none fixed bottom-0 w-3/4" [formGroup]="messageForm" (ngSubmit)="submitMessage()">
     <mat-form-field class="w-full">
       <mat-label>Chat</mat-label>
-      <input matInput placeholder=". . . ." formControlName="message">
+      <input matInput placeholder=". . ." formControlName="message">
     </mat-form-field>
   </form>
 </div>

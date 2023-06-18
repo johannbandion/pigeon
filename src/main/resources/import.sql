@@ -1,5 +1,12 @@
 -- insert into USERS (name, password) values ('Johann Bandion', 'password');
 
+
+
+INSERT INTO public.userentity (username, password)
+VALUES ('Ava Taylor',
+        '9da71e3953a6fc6511d2768272f83ff2:978ca349cc6e0f538077925b6423faa93badc871e51e3d5a42d8a703b726d9f4c84fa90e53b7814cfa6a1a06f7e38bfc4bb3c9463ed6d7c43bdb1b45031c9eac');
+
+
 INSERT INTO public.userentity (username, password)
 VALUES ('johann@bandion.net',
         '638fe88be84db22fc1e7d5c2dd47303f:59ab16e2492de032ccdfc8f9934f85bac7713833df6683ecc1707e18cdd48f7a89e19269a5916daaa399b650178ea9a936b5780384ba46f73d7bcc554b3ce01f');
@@ -68,9 +75,6 @@ INSERT INTO public.userentity (username, password)
 VALUES ('James Anderson',
         'b32b55e5a87630d9c12bfe769b2cfbf9:69bd6db75974be9701bbcc76339f6a8a45a413e006c73be2b5939b9c133b32a562b0592f5d2715fc955f4b808cd020a2aac5495e0da5f50556f33daa930edcaa');
 
-INSERT INTO public.userentity (username, password)
-VALUES ('Ava Taylor',
-        '9da71e3953a6fc6511d2768272f83ff2:978ca349cc6e0f538077925b6423faa93badc871e51e3d5a42d8a703b726d9f4c84fa90e53b7814cfa6a1a06f7e38bfc4bb3c9463ed6d7c43bdb1b45031c9eac');
 
 INSERT INTO public.userentity (username, password)
 VALUES ('Benjamin Martinez',
@@ -100,3 +104,16 @@ INSERT INTO public.userentity (username, password)
 VALUES ('Henry Hernandez',
         'd06d388c8e1f92626ee9a27bcd2c6678:a2cb847fcb7ecc3e230d481249bf6799232094163f43712afcb9749fdf6cdfebf7fc27d977dadce5f81055ab73e6ac75e32e376169493a09f6df1b45cd6d9ef0');
 
+
+
+INSERT INTO public.userentity_chatentity (username, chatid)
+VALUES ('johann@bandion.net', 1);
+
+INSERT INTO public.userentity_chatentity (username, chatid)
+VALUES ('Ava Taylor', 1);
+
+INSERT INTO public.userentity_chatentity (username, chatid)
+VALUES ('johann@bandion.net', 2);
+
+INSERT INTO public.userentity_chatentity (username, chatid)
+VALUES ('Benjamin Martinez', 2);
