@@ -1,10 +1,4 @@
--- insert into USERS (name, password) values ('Johann Bandion', 'password');
 
-
-
-INSERT INTO public.userentity (username, password)
-VALUES ('Ava Taylor',
-        '9da71e3953a6fc6511d2768272f83ff2:978ca349cc6e0f538077925b6423faa93badc871e51e3d5a42d8a703b726d9f4c84fa90e53b7814cfa6a1a06f7e38bfc4bb3c9463ed6d7c43bdb1b45031c9eac');
 
 
 INSERT INTO public.userentity (username, password)
@@ -105,6 +99,8 @@ VALUES ('Henry Hernandez',
         'd06d388c8e1f92626ee9a27bcd2c6678:a2cb847fcb7ecc3e230d481249bf6799232094163f43712afcb9749fdf6cdfebf7fc27d977dadce5f81055ab73e6ac75e32e376169493a09f6df1b45cd6d9ef0');
 
 
+
+-- insert into USERS (name, password) values ('Johann Bandion', 'password');
 
 INSERT INTO public.userentity_chatentity (username, chatid)
 VALUES ('johann@bandion.net', 1);
